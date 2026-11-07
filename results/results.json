@@ -1,0 +1,152 @@
+{
+ "data": {
+  "devices": 80,
+  "windows": 12000,
+  "train": 9000,
+  "test": 3000,
+  "class_counts_test": [
+   1536,
+   379,
+   329,
+   349,
+   407
+  ],
+  "classes": [
+   "normal",
+   "harsh_braking",
+   "harsh_acceleration",
+   "harsh_cornering",
+   "road_bump"
+  ]
+ },
+ "models": {
+  "rule": {
+   "accuracy": 0.7946666666666666,
+   "macro_f1": 0.6559954613107091
+  },
+  "gbm_features": {
+   "accuracy": 0.9753333333333334,
+   "accuracy_std": 0.0,
+   "macro_f1": 0.9750224309098415,
+   "macro_f1_std": 0.0
+  },
+  "cnn_raw": {
+   "accuracy": 0.9274444444444444,
+   "accuracy_std": 0.003823255674241155,
+   "macro_f1": 0.8966819702601788,
+   "macro_f1_std": 0.005030687517446535
+  },
+  "cnn_raw_rot_aug": {
+   "accuracy": 0.9298888888888889,
+   "accuracy_std": 0.0023147407395554902,
+   "macro_f1": 0.909783758500712,
+   "macro_f1_std": 0.002994047178859771
+  },
+  "cnn_invariant": {
+   "accuracy": 0.9727777777777779,
+   "accuracy_std": 0.0005665577237325563,
+   "macro_f1": 0.972154459059924,
+   "macro_f1_std": 0.0005945923645084498
+  }
+ },
+ "best_model": {
+  "name": "cnn_invariant",
+  "params": 45221,
+  "confusion": [
+   [
+    1493,
+    14,
+    7,
+    14,
+    8
+   ],
+   [
+    9,
+    370,
+    0,
+    0,
+    0
+   ],
+   [
+    14,
+    0,
+    315,
+    0,
+    0
+   ],
+   [
+    4,
+    0,
+    0,
+    345,
+    0
+   ],
+   [
+    10,
+    0,
+    0,
+    0,
+    397
+   ]
+  ],
+  "by_distance_to_threshold": {
+   "within 10% of threshold": {
+    "windows": 248,
+    "accuracy": 0.7782258064516129
+   },
+   "10-25%": {
+    "windows": 360,
+    "accuracy": 0.9361111111111111
+   },
+   "more than 25%": {
+    "windows": 1790,
+    "accuracy": 0.9988826815642458
+   },
+   "cruise (no event)": {
+    "windows": 602,
+    "accuracy": 1.0
+   }
+  }
+ },
+ "leakage": {
+  "cnn_raw_random_split": {
+   "accuracy": 0.952557200538358,
+   "macro_f1": 0.9388609352765906
+  },
+  "cnn_raw_device_split": {
+   "accuracy": 0.9274444444444444,
+   "macro_f1": 0.8966819702601788
+  }
+ },
+ "edge": {
+  "pytorch_fp32": {
+   "accuracy": 0.9733333333333334,
+   "macro_f1": 0.9727827844788763,
+   "p50_ms": 0.4806450001524354,
+   "p95_ms": 0.6432453497154711
+  },
+  "onnx_fp32": {
+   "accuracy": 0.9733333333333334,
+   "macro_f1": 0.9727827844788763,
+   "size_kb": 181.8505859375,
+   "agreement_with_pytorch": 1.0,
+   "p50_ms": 0.10562000011304917,
+   "p95_ms": 0.1335218997837728
+  },
+  "onnx_int8": {
+   "accuracy": 0.9736666666666667,
+   "macro_f1": 0.9729648173557616,
+   "size_kb": 70.142578125,
+   "agreement_with_pytorch": 0.9923333333333333,
+   "p50_ms": 0.08599650004725845,
+   "p95_ms": 0.12335720011833473
+  },
+  "gbm_features": {
+   "accuracy": 0.9753333333333334,
+   "macro_f1": 0.9750224309098415,
+   "p50_ms": 9.838807500045732,
+   "p95_ms": 13.668898799937784
+  }
+ },
+ "runtime_s": 1161.9
+}
