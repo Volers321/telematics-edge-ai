@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telematics-edge-ai"
+version = "0.1.0"
+description = "Harsh-driving event detection from a telematics box mounted at an unknown angle: physics features vs 1D CNNs in PyTorch, evaluated on unseen boxes, exported to ONNX and quantized to int8 for edge CPUs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Volers321" }]
+dependencies = [
+    "numpy>=1.26",
+    "scikit-learn>=1.4",
+    "torch>=2.2",
+    "onnx>=1.16",
+    "onnxruntime>=1.18",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+tedge = "tedge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
