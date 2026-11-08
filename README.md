@@ -17,6 +17,23 @@
 
 > The data is **simulated** (see [Data](#data)). The point of the project is the method — invariance, evaluation on unseen devices, edge export — not a claim about a specific product.
 
+## Telematics in short
+
+A telematics box in a truck combines GPS, a GSM modem and sensors, often wired to the vehicle's CAN bus and the tachograph. It sends position, speed, fuel, driver hours, reefer temperature, door openings and driving style to a fleet platform. Fleets use that data to:
+
+| Use | What it gives |
+|---|---|
+| Live tracking and ETA | customers know when the load arrives |
+| Driver scoring | fewer accidents, coaching on harsh braking and cornering |
+| Fuel and route analysis | lower fuel cost, less idling |
+| Maintenance planning | service based on mileage and engine data |
+| Toll settlement, driver hours | compliance and billing |
+| Usage-based insurance | premiums priced on how the fleet actually drives |
+
+This project covers one piece of that list: **driver scoring**, done on the box itself. Detecting events on the device means sending only the events, not 50 Hz raw data, so the model must be small and fast.
+
+🇵🇱 *Telematyka to zdalne zbieranie danych z pojazdów (GPS, modem GSM, czujniki, magistrala CAN, tachograf) i ich analiza. Służy do śledzenia ładunków i ETA, oceny stylu jazdy kierowców, oszczędzania paliwa, planowania serwisu, rozliczeń dróg płatnych i wyceny ubezpieczeń. Ten projekt dotyczy oceny stylu jazdy, liczonej bezpośrednio w skrzynce.*
+
 ## Why this project
 
 I have run a transport company since 2015. Fleet telematics turns accelerometer data into driver scores ("harsh braking: 14 this week") and insurance and safety decisions, and the engineering problems behind it are the same everywhere: installers mount the box at random angles, a new box must work on day one without recalibration, and the model has to run on a small CPU next to everything else the box does.
